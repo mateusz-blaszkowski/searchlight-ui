@@ -194,9 +194,12 @@
 
       //TODO handle nested better
       if (~facet.name.indexOf('.')) {
+        var facetParts = facet.name.split('.');
+        facetParts.pop();
+        facet = facetParts.join('.');
         var nestedMust = {
           'nested': {
-            'path': facet.name.split('.')[0],
+            'path': facet,
             'query': newMust
           }
         };
